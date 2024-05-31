@@ -1,0 +1,132 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Formulario de reservas</strong>
+        </c-card-header>
+        <c-card-body>
+            <form cForm>
+
+              <div class="mb-3">
+                <label cLabel for="ci">Ci</label>
+                <input cFormControl
+                       id="ci"
+                       placeholder ="ingrese ci"
+                       [(ngModel)] = "reservasModelo.ci"
+                       type="number"
+                       name="ci"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label cLabel for="nombre">Nombre</label>
+                <input cFormControl
+                       id="nombre"
+                       placeholder="ingrese nombre"
+                       type="text"
+                       name="nombre"
+                       [(ngModel)] = "reservasModelo.nombre"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label cLabel for="tipo">Tipo</label>
+                <input cFormControl
+                       id="tipo"
+                       placeholder="ingrese tipo"
+                       type="text"
+                       name="tipo"
+                       [(ngModel)] = "reservasModelo.tipo"
+  
+                />
+              </div>
+
+              <div class="mb-3">
+                <label cLabel for="fecha">Fecha</label>
+                <input cFormControl
+                       id="fecha"
+                       placeholder="ingrese fecha"
+                       type="text"
+                       name="fecha"
+                       [(ngModel)] = "reservasModelo.fecha"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label cLabel for="hora">Hora</label>
+                <input cFormControl
+                       id="hora"
+                       placeholder="ingrese hora"
+                       type="text"
+                       name="hora"
+                       [(ngModel)] = "reservasModelo.hora"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label cLabel for="usuario">Usuario</label>
+                <input cFormControl
+                       id="usuario"
+                       type="text"
+                       name="usuario"
+                       [(ngModel)] = "reservasModelo.usuario"
+                />
+                <!-- <select  aria-label="Seleccione usuario" cSelect >
+                  <option></option>
+                  <option value="664407b69616a061c8547132">xiac</option>
+                  <option value="2">Esteban</option>
+                  <option value="3">Esther</option>
+                </select> -->
+              </div>
+
+              <div class="mb-3">
+                <label cLabel for="paciente">Paciente</label>
+                <input cFormControl
+                       id="paciente"
+                       type="text"
+                       name="paciente"
+                       [(ngModel)] = "reservasModelo.paciente"
+                />
+              </div>
+
+
+              <button (click)="guardarReservas()" cButton class="me-1" color="primary" type="submit">
+                Guardar
+              </button>
+
+            </form>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="12">
+      <table cTable>
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">ci</th>
+          <th scope="col">nombre</th>
+          <th scope="col">tipo</th>
+          <th scope="col">fecha</th>
+          <th scope="col">hora</th>
+
+        </tr>
+        </thead>
+        <tbody>
+          @for ( reservas of listaReservas; track reservas; ){
+            <tr>
+              <th scope="row">1</th>
+              <td>{{reservas.ci}}</td>
+              <td>{{reservas.nombre}}</td>
+              <td>{{reservas.tipo}}</td>
+              <td>{{reservas.fecha}}</td>
+              <td>{{reservas.hora}}</td>
+              <td>
+                <button (click)="verReservas(reservas)" cButton color="warning" variant="outline" >Editar</button>
+                <button (click)="eliminarReservas(reservas)" cButton color="danger" variant="outline">Eliminar</button></td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </c-col>
+  </c-row>
+  
